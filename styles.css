@@ -155,6 +155,11 @@ img {
   100% { transform: scale(1.06); opacity: .85; }
 }
 
+@keyframes portrait-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
 /* Blob */
 .blob {
   position: absolute;
@@ -263,15 +268,19 @@ img {
   position: relative;
   justify-self: center;
   width: min(290px, 80%);
+  animation: portrait-float 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 .home__blob {
   position: absolute;
   inset: 12% 6% 18%;
-  background: radial-gradient(circle at 50% 60%, var(--first-color-alt) 0%, hsl(var(--hue), 80%, 40%) 55%, transparent 100%);
+  background: radial-gradient(circle at 50% 55%, hsla(var(--hue), 95%, 75%, .95) 0%, var(--first-color-alt) 32%, hsla(var(--hue), 85%, 45%, .42) 62%, transparent 100%);
   border-radius: 50%;
-  filter: blur(36px);
-  animation: blob-glow 5s ease-in-out infinite alternate;
+  filter: blur(48px);
+  opacity: .9;
+  transform: scale(1.08);
+  animation: blob-glow 4s ease-in-out infinite alternate;
 }
 
 .home__perfil {
@@ -882,6 +891,7 @@ img {
     margin-inline: auto;
     bottom: 3.5rem;
     width: 440px;
+    filter: drop-shadow(0 0 28px hsla(var(--hue), 90%, 65%, .22));
   }
 
   .home__data,
@@ -946,5 +956,5 @@ img {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .blob, .home__blob, .about__blob, .testimonials__content { animation: none; }
+  .blob, .home__blob, .about__blob, .testimonials__content, .home__image { animation: none; }
 }

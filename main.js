@@ -1,5 +1,17 @@
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+/*=============== HOME NAME / TEXT ENTRANCE ===============*/
+const homeName = document.querySelector('.home__name')
+if (homeName && !reduceMotion) {
+  homeName.animate(
+    [
+      { opacity: 0, transform: 'translateY(28px)' },
+      { opacity: 1, transform: 'translateY(0)' }
+    ],
+    { duration: 1100, delay: 500, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'both' }
+  )
+}
+
 /*=============== HOME SPLIT TEXT ===============*/
 const splitText = document.querySelector('.home__split')
 
@@ -215,7 +227,7 @@ if (typeof ScrollReveal !== 'undefined' && !reduceMotion) {
 
   sr.reveal('.home__data, .home__social', { origin: 'left', delay: 600 })
   sr.reveal('.home__info, .home__cv', { origin: 'right', delay: 600 })
-  sr.reveal('.home__image', { origin: 'bottom', delay: 300 })
+  sr.reveal('.home__image', { origin: 'left', distance: '100px', duration: 1400, delay: 250, opacity: 0, easing: 'cubic-bezier(.2,.8,.2,1)' })
 
   sr.reveal('.about__image', { origin: 'left' })
   sr.reveal('.about__data', { origin: 'right' })
